@@ -1,740 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guru's Athenaeum - English Literary Club</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #1a5490;
-            --dark-blue: #0d2d4a;
-            --navy-blue: #001f3f;
-            --light-blue: #e3f2fd;
-            --accent-blue: #2196F3;
-            --light-bg: #f0f4f8;
-            --text-dark: #333;
-            --text-light: #fff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICIDHAI 2026</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link rel="stylesheet" href="style.css">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #fff;
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header Styling */
-        header {
-            background: transparent;
-            box-shadow: none;
-            padding: 1rem 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .header-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-left, .logo-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-left { justify-content: flex-start; }
-        .logo-right { justify-content: flex-end; }
-
-        .header-logo {
-            height: 110px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .header-center-img {
-            width: 100%;
-            height: 110px;
-            object-fit: contain;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 10rem 2rem 4rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .department-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #fff;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            font-weight: 900;
-        }
-
-        .club-subtitle {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .main-slogan {
-            font-size: 1.3rem;
-            color: #FFD700;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            font-style: italic;
-        }
-
-        .embrace-slogan {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #fff; 
-            margin-bottom: 1.5rem;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
-            color: #fff;
-        }
-
-        .benefits h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #fff;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            border-top: 4px solid var(--accent-blue);
-            backdrop-filter: blur(5px);
-            color: #fff;
-        }
-
-        .benefit-card h3 {
-            color: #FFD700;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .benefit-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Events Section */
-        .events {
-            padding: 5rem 2rem;
-            background: #fff;
-        }
-
-        .events h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark-blue);
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            header { position: relative; padding: 1rem 0; }
-            .header-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .logo-left, .logo-right { justify-content: center; }
-            .header-logo, .header-center-img { height: 70px; }
-            .hero { padding-top: 2rem; min-height: auto; }
-            .hero h1 { font-size: 2.5rem; }
-            .events-grid { grid-template-columns: 1fr; }
-        }
-
-        .event-card {
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .event-header {
-            background: var(--primary-blue);
-            color: #fff;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .event-header h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .event-details {
-            display: flex;
-            justify-content: space-around;
-            padding: 1.5rem;
-            background: var(--light-blue);
-            border-bottom: 1px solid #ddd;
-        }
-
-        .detail-item {
-            text-align: center;
-        }
-
-        .detail-item .label {
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 0.25rem;
-        }
-
-        .detail-item .value {
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .rules-section {
-            padding: 2rem;
-            flex-grow: 1;
-        }
-
-        .rules-section h4 {
-            color: var(--dark-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .rules-section ul, .rules-section ol {
-            padding-left: 1.5rem;
-        }
-
-        .rules-section li {
-            margin-bottom: 0.75rem;
-        }
-
-        .registration-cta {
-            padding: 2rem;
-            background: var(--light-blue);
-            text-align: center;
-        }
-
-        .countdown-timer {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-
-        .timer-display {
-            font-size: 1.3rem;
-            color: #d32f2f;
-            margin-top: 0.5rem;
-            font-weight: 900;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: #fff;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: var(--transition);
-        }
-
-        .btn-primary:hover {
-            background: var(--dark-blue);
-        }
-
-        .btn-primary.disabled {
-            background: #666;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        /* Winners Section */
-        .winners {
-            padding: 5rem 2rem;
-            background: var(--light-bg);
-        }
-
-        .winners h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark-blue);
-        }
-
-        .valedictory-note {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: var(--light-blue);
-            border-left: 4px solid var(--primary-blue);
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .valedictory-note p {
-            font-size: 1rem;
-            color: var(--dark-blue);
-            font-weight: 500;
-            line-height: 1.8;
-        }
-
-        .winners-table-container {
-            overflow-x: auto;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .winners-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        .winners-table th, .winners-table td {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .winners-table th {
-            background: var(--primary-blue);
-            color: #fff;
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            padding: 5rem 2rem;
-            background: #fff;
-        }
-
-        .gallery h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark-blue);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            height: 250px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-blue);
-            color: #fff;
-            padding: 4rem 0 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-grid h3 {
-            color: var(--accent-blue);
-            margin-bottom: 1.5rem;
-        }
-
-        .member {
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding: 2rem 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
-        }
-    </style>
 </head>
+
 <body>
-    <header>
-        <div class="container header-grid">
-            <div class="logo-left">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663596859077/MifRLgcaCSCemyTQ.png" alt="College Logo" class="header-logo">
-            </div>
-            <div class="logo-center">
-                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663596859077/VHuFLOHuGfHyXlCb.png" alt="College Name and Affiliations" class="header-center-img">
-            </div>
-            <div class="logo-right">
-                <img src="https://res.cloudinary.com/dysrmfhoa/image/upload/v1777184461/guru_athenaeum_n1i2hp.jpg" alt="Athenaeum Logo" class="header-logo">
-            </div>
-        </div>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="department-title">
-                    Department of Humanities and Sciences
-                </div>
+<!-- LOADER -->
+<div id="loader"><div class="spinner"></div></div>
 
-                <h1>GURU'S ATHENAEUM 25-26</h1>
+<!-- PARTICLES -->
+<div id="tsparticles"></div>
 
-                <div class="club-subtitle">
-                    English Literary Club
-                </div>
+<!-- NAVBAR -->
+<nav>
+<h2>ICIDHAI 2026</h2>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#publication">Publication</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-                <div class="main-slogan">
-                    Guru's Athenaeum - A Platform to Bring Life to Your Ideas
-                </div>
-                
-                <div class="embrace-slogan">
-                    Embrace Will to Power
-                </div>
-            </div>
-        </section>
+<!-- HERO -->
+<section class="hero">
+<h1>INTERNATIONAL CONFERENCE</h1>
+<h2><span id="typing"></span></h2>
+<p>31 July & 1 August 2026 | Hyderabad</p>
 
-        <section id="benefits" class="benefits">
-            <div class="container">
-                <h2>Why Join Our Events?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="icon">👥</div>
-                        <h3>Connect & Collaborate</h3>
-                        <p>Meet fellow creative minds, build meaningful connections, and collaborate on exciting literary projects in a supportive community.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="icon">✨</div>
-                        <h3>Build Confidence</h3>
-                        <p>Overcome stage fear. Showcase your talent, receive recognition, and grow as a creative individual.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="icon">🏆</div>
-                        <h3>Win Recognition</h3>
-                        <p>Compete for prizes, certificates, and recognition. Every participant is celebrated for their unique performance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div id="countdown"></div>
 
-        <section id="events" class="events container">
-            <h2>This Week's Events</h2>
-            <div class="events-grid">
-                <!-- EVENT 1: Art from Waste -->
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Art from Waste</h3>
-                        <p>Eco-friendly innovation at its best</p>
-                    </div>
-                    <div class="event-details">
-                        <div class="detail-item">
-                            <span class="label">Date</span>
-                            <span class="value">30 April 2026</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="label">Time</span>
-                            <span class="value">10:00 AM to 1:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="rules-section">
-                        <h4>Rules and Regulations</h4>
-                        <ul>
-                            <li>Participants in teams (max 2–3 members).</li>
-                            <li>Theme: Eco-friendly / Sustainability message.</li>
-                            <li>At least 70–90% of the material should be waste items.</li>
-                            <li>Participants must bring their own materials.</li>
-                            <li>The model must be original and innovative.</li>
-                        </ul>
-                    </div>
-                    <div class="registration-cta">
-                        <h5 id="cta-text1">Ready to Showcase Your Creativity?</h5>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0nNwhd7Y2bLS0EYf1XNmVwQj3OgBcQNrrOBtcAFhg4mlMLw/viewform?usp=header" 
-                           class="btn-primary" target="_blank" id="reg-btn1">
-                           Register for the Event
-                        </a>
-                        <div class="countdown-timer">
-                            <p id="timer-label1">Registration closes in:</p>
-                            <div class="timer-display" id="timer1">00:00:00</div>
-                        </div>
-                    </div>
-                </div>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSf-stzl5TTuQIUEQlMXQltMTzXS-sOLhhi1nmDyepn1WUuRiA/viewform" class="btn">Register Now</a>
+</section>
 
-                <!-- EVENT 2: Model Making -->
-                <div class="event-card">
-                    <div class="event-header">
-                        <h3>Model Making</h3>
-                        <p>Bring your structural visions to life</p>
-                    </div>
-                    <div class="event-details">
-                        <div class="detail-item">
-                            <span class="label">Date</span>
-                            <span class="value">30 April 2026</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="label">Time</span>
-                            <span class="value">10:00 AM to 1:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="rules-section">
-                        <h4>Rules and Regulations</h4>
-                        <ol>
-                            <li>Participation is in teams of maximum 3 members.</li>
-                            <li>50% of the model must be prepared at home and brought to the venue.</li>
-                            <li>Remaining 50% must be completed at the venue within the allotted time.</li>
-                            <li>Only waste/recyclable materials may be used.</li>
-                            <li>Participants must bring their own materials and tools.</li>
-                            <li>Use of hazardous materials is strictly prohibited.</li>
-                            <li>The model must be original and created only by team members.</li>
-                            <li>Judging criteria: creativity, use of waste materials, teamwork, and presentation.</li>
-                            <li>Maintain cleanliness and follow organizers’ instructions.</li>
-                            <li>Judges’ decision will be final.</li>
-                            <li>Rule violations may lead to disqualification.</li>
-                        </ol>
-                    </div>
-                    <div class="registration-cta">
-                        <h5 id="cta-text2">Ready to Showcase Your Model?</h5>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGyzaS8-A332m-s3u5np8eCW0pv3LpeI3976wde5OWrL9gfg/viewform?usp=header" 
-                           class="btn-primary" target="_blank" id="reg-btn2">
-                            Register for the Event
-                        </a>
-                        <div class="countdown-timer">
-                            <p id="timer-label2">Registration closes in:</p>
-                            <div class="timer-display" id="timer2">00:00:00</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- ABOUT -->
+<section id="about" data-aos="fade-up">
+<h2>About</h2>
+<p>Global platform for researchers and innovators in Digital Humanities & AI.</p>
+</section>
 
-        <section id="winners" class="winners container">
-            <h2>Weekly Event Winners List</h2>
-            <div class="winners-table-container">
-                <table class="winners-table">
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>1st Place</th>
-                            <th>2nd Place</th>
-                            <th>3rd Place</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Art from Waste</td>
-                            <td>       </td>
-                            <td>       </td>
-                            <td>       </td>
-                        </tr>
-                        <tr>
-                            <td>Model Making</td>
-                            <td>      </td>
-                            <td>      </td>
-                            <td>      </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="valedictory-note">
-                <p>The winners shall be formally honoured and awarded prizes at the Valedictory Session, convened upon the successful culmination of the three-week literary event series.</p>
-            </div>
-        </section>
+<!-- PUBLICATION -->
+<section id="publication" data-aos="zoom-in">
+<h2>Publication</h2>
+<div class="cards">
+<div class="card">ISBN Edited Volume</div>
+<div class="card">International Journal Publication</div>
+</div>
+</section>
 
-        <section id="gallery" class="gallery container">
-            <h2>Event Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" alt="Gallery 1"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=1000" alt="Gallery 2"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=1000" alt="Gallery 3"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=1000" alt="Gallery 4"></div>
-            </div>
-        </section>
-    </main>
+<!-- GALLERY -->
+<section id="gallery" data-aos="fade-left">
+<h2>Gallery</h2>
+<div class="gallery">
+<img src="https://source.unsplash.com/300x200/?conference">
+<img src="https://source.unsplash.com/300x200/?seminar">
+<img src="https://source.unsplash.com/300x200/?audience">
+</div>
+</section>
 
-    <footer id="contact">
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <h3>GURU'S ATHENAEUM</h3>
-                <p>A celebration of creativity and expression at Guru Nanak Institutions English Literary Club.</p>
-            </div>
-            <div class="footer-members">
-                <h3>Club Members</h3>
-                <div class="member">
-                    <strong>Coordinator:</strong> Dr. K Muthulakshmi<br>
-                    Phone: 8838412831
-                </div>
-                <div class="member">
-                    <strong>President:</strong> N. Saideepthi<br>
-                    Phone: 9908608382<br>
-                </div>
-                <div class="member">
-                    <strong>Vice President:</strong> S. Charan Tej<br>
-                    Phone: 9346335136<br>
-                </div>
-                <div class="member">
-                    <strong>Secretary:</strong> Racharla Sumedha Sree<br>
-                    Phone: 7382309430<br>
-                </div>
-                <div class="member">
-                    <strong>Technical Support:</strong> M. Harshavardhan<br>
-                    Phone: 9014248652<br>
-                </div>
-            </div>
-            <div class="footer-contact">
-                <h3>Get in Touch</h3>
-                <p>Email: gurus.athenaeum@gmail.com </p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 GURU'S ATHENAEUM 26-26. Guru Nanak Institutions. All rights reserved.</p>
-        </div>
-    </footer>
+<!-- CONTACT -->
+<section id="contact" data-aos="fade-right">
+<h2>Contact</h2>
+<p>Email: icidhai2026@gniindia.org</p>
+</section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // TARGET DATE: 29 April 2026, 11:59 PM
-            const targetDate = new Date('April 29, 2026 23:59:59').getTime();
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-            function updateCountdownTimer() {
-                const now = new Date().getTime();
-                const timeRemaining = targetDate - now;
+<script src="script.js"></script>
 
-                const timer1 = document.getElementById('timer1');
-                const timer2 = document.getElementById('timer2');
-                const btn1 = document.getElementById('reg-btn1');
-                const btn2 = document.getElementById('reg-btn2');
-                const label1 = document.getElementById('timer-label1');
-                const label2 = document.getElementById('timer-label2');
-
-                if (timeRemaining > 0) {
-                    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                    const timeString = 
-                        (days > 0 ? days + "d " : "") + 
-                        String(hours).padStart(2, '0') + ":" + 
-                        String(minutes).padStart(2, '0') + ":" + 
-                        String(seconds).padStart(2, '0');
-
-                    if (timer1) timer1.textContent = timeString;
-                    if (timer2) timer2.textContent = timeString;
-                } else {
-                    // Timer ended
-                    if (timer1) timer1.textContent = "REGISTRATIONS CLOSED";
-                    if (timer2) timer2.textContent = "REGISTRATIONS CLOSED";
-                    
-                    if (label1) label1.style.display = 'none';
-                    if (label2) label2.style.display = 'none';
-
-                    // Disable buttons
-                    if (btn1) {
-                        btn1.classList.add('disabled');
-                        btn1.textContent = "Registrations Closed";
-                        btn1.href = "javascript:void(0)";
-                    }
-                    if (btn2) {
-                        btn2.classList.add('disabled');
-                        btn2.textContent = "Registrations Closed";
-                        btn2.href = "javascript:void(0)";
-                    }
-                }
-            }
-
-            // Run immediately and then every second
-            updateCountdownTimer();
-            setInterval(updateCountdownTimer, 1000);
-        });
-    </script>
 </body>
 </html>
